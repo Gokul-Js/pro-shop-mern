@@ -29,11 +29,11 @@ const CartScreen = ({ match, location, history }) => {
         history.push('/login?redirect=shipping')
     }
 
-    return <Row>
+    return (<Row>
         <Col md={8}>
           <h1>Shopping Cart</h1>
-          {cartItems.length === 0 ? <Message>Your cart is empty <Link to='/'>Go
-          Back</Link></Message> : (
+          {cartItems.length === 0 ? ( <Message>Your cart is empty <Link to='/'>Go
+          Back</Link></Message> ) : (
             <ListGroup variant='flush'>
               {cartItems.map(item => (
                 <ListGroup.Item key={item.product}>
@@ -94,6 +94,7 @@ const CartScreen = ({ match, location, history }) => {
           </Card>
         </Col>
     </Row>  
+    )
 }
 
 export default CartScreen

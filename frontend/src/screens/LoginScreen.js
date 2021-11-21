@@ -19,10 +19,10 @@ const LoginScreen = ({ location, history }) => {
     const redirect = location.serach ? location.search.split('=')[1] : '/'
 
     useEffect(() => {
-        if(userInfo) {
+        if (userInfo) {
             history.push(redirect)
         }
-    },[history, userInfo, redirect])
+    }, [history, userInfo, redirect])
 
       const submithandler = (e) => {
           e.preventDefault()
