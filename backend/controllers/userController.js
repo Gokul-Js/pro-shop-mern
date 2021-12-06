@@ -141,7 +141,7 @@ const getUserById = asyncHandler(async (req, res) => {
   }
 })
 
-// @desc    Update user 
+// @desc    Update user
 // @route   PUT /api/users/:id
 // @access  Private/Admin
 const updateUser = asyncHandler(async (req, res) => {
@@ -150,7 +150,7 @@ const updateUser = asyncHandler(async (req, res) => {
   if (user) {
     user.name = req.body.name || user.name
     user.email = req.body.email || user.email
-    user.isadmin = req.body.isAdmin || user.isAdmin
+    user.isAdmin = req.body.isAdmin
 
     const updatedUser = await user.save()
 
@@ -158,14 +158,13 @@ const updateUser = asyncHandler(async (req, res) => {
       _id: updatedUser._id,
       name: updatedUser.name,
       email: updatedUser.email,
-      isAdmin: updatedUser.isAdmin
+      isAdmin: updatedUser.isAdmin,
     })
   } else {
-      res.status(404)
-      throw new Error('User not found')
+    res.status(404)
+    throw new Error('User not found')
   }
 })
-
 export {
   authUser,
   registerUser,
