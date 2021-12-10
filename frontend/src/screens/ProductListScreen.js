@@ -45,12 +45,16 @@ const ProductListScreen = ({ history, match }) => {
   ]);
 
   const deleteHandler = (id) => {
+
     if (window.confirm('Are you sure')) {
+
       dispatch(deleteProduct(id))
     }
   }
 
   const createProductHandler = () => {
+
+    console.log("I am clicked")
       dispatch(createProduct())
   }
 
@@ -61,7 +65,7 @@ const ProductListScreen = ({ history, match }) => {
               <h1>Products</h1>
           </Col>
           <Col className='text-right'>
-              <Button className='my-3' onCliclk={createProductHandler}>
+              <Button className='my-3' onClick={createProductHandler}>
                   <i className='fas fa-plus'></i> Create Product
               </Button>
           </Col>
