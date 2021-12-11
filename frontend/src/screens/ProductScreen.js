@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import Meta from '../components/Meta'
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { Row, Col, Image, ListGroup, Card, Button, Form, } from 'react-bootstrap'
@@ -56,6 +57,7 @@ const ProductScreen = ({ history, match } ) => {
      </Link>
      {loading ? <Loader /> : error ? <Message variant='danger'>{error}</Message> : (
        <>
+        <Meta title={product.name} />
        <Row>
        <Col md={6}>
          <Image src={product.image} alt={product.name} fluid />
@@ -132,18 +134,18 @@ const ProductScreen = ({ history, match } ) => {
        </Col>
    </Row>
    <Row>
-    <Col md={6}>
-      <h2>Reviews</h2>
-      {product.reviews.length === 0 && <Message> No Reviews</Message>}
-      <ListGroup variant='flush'>
-         {product.reviews.map(review => (
-           <ListGroup.Item key={review._id}>
-             <strong>{review.name}</strong>
-             <Rating  value={review.rating} />
-          <p>{review.createdAt.substring(0, 10)}</p>
-          <p>{review.comment}</p>
-           </ListGroup.Item>
-         ))}
+     <Col md={6}>
+       <h2>Reviews</h2>
+        {product.reviews.length === 0 && <Message>No Reviews</Message>}
+        <ListGroup variant='flush'>
+          {product.reviews.map((review) => (
+            <ListGroup.Item key={review._id}>
+              <strong>{review.name}</strong>
+              <Rating value={review.rating} />
+              <p>{review.createdAt.substring(0, 10)}</p>
+              <p>{review.comment}</p>
+            </ListGroup.Item>
+       ))}
          <ListGroup.Item>
            <h2>Write a customer Review</h2>
            {errorProductReview && ( 
